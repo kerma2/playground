@@ -1,7 +1,3 @@
-import '@babel/polyfill'
+const register = require('@babel/register').default
 
-async function main() {
-	// Code goes here
-}
-
-main()
+register({ extensions: '.ts,.tsx,.js,.jsx' })
