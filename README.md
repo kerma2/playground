@@ -1,2 +1,3 @@
-# playground
+# Playground
+
 Empty Node.js projet
