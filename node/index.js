@@ -1,7 +1,7 @@
 import '@babel/polyfill'
 
 // import computeElectionResults from './results/computeElectionResults'
-import generatePvElectionsPdf from './results/generatePvElectionsPdf'
+import generatePvElectionsPdf from './results/generatePvElectionsPdf/generatePvElectionsPdf'
 
 const results = {
 	voteType: "titular",
