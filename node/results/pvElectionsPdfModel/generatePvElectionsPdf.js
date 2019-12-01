@@ -6,22 +6,6 @@ import { format, parseISO } from 'date-fns'
 
 // IMPORTANT TODO : reset Constant import
 // import { ELEMENT_FORMAT as E, URN_TYPES } from '../../common/constants'
-const e = {
-  unknown: '..',
-  date_seperator: '/',
-  hour_seperator: 'h'
-}
-
-const E = {
-  DATE: 'DD/MM/YYYY',
-  HOUR: 'HH:mm',
-  HOUR_SPACE: 'HH mm',
-  UNKNOWN_VALUE: e.unknown,
-  DATE_SEPARATOR: e.date_seperator,
-  HOUR_SEPARATOR: e.hour_seperator,
-  DATE_UNKNOWN: e.unknown + e.date_seperator + e.unknown + e.date_seperator + e.unknown + e.unknown,
-  HOUR_UNKNOWN: e.unknown + e.hour_seperator + e.unknown
-}
 
 const URN_TYPES = {
   TITULAR: 'titular',
@@ -38,18 +22,18 @@ const constants = {
   PATH_TO_SUPPLEANT_BACKGROUND_2: './cerfa_15823_01/cerfa_15823_01_2.png'
 }
 
-function createContent(data) {
+function createContent(finalResults) {
 
-  const { establishment, college, rounds } = data
+  const { company, college, establishments } = finalResults
   const c = []
-
+  const establishment = finalResults.establishment
   // I - etablisment
   c.push(utils.createBackground('background_1'))
   c.push(utils.createSiretPart(establishment.siret, 202, 109, 1))
   c.push(utils.createSiretPart(establishment.siret, 202, 109, 2))
   c.push(utils.createSiretPart(establishment.siret, 202, 109, 3))
   c.push(utils.createSiretPart(establishment.siret, 202, 109, 4))
-  c.push(utils.createText(establishment.name, 156, 120))
+  c.push(utils.createText(company.name, 156, 120))
   c.push(utils.createText(establishment.address.street, 142, 130))
   c.push(utils.createText(establishment.address.code, 150, 147, '10', '4'))
   c.push(utils.createText(establishment.address.city, 224, 148))
@@ -64,7 +48,7 @@ function createContent(data) {
 
   c.push(utils.createText(college.term, 185, 193))
 
-  c.push(utils.createText(establishment.nbColleges, 297, 203))
+  c.push(utils.createText(finalResults.nbColleges, 297, 203))
 
   // // II - college
   const denominationY = utils.getYaxisDenomination(college.denominationType)
@@ -89,43 +73,43 @@ function createContent(data) {
   })
 
   // III - Results 1st Round
-  const date_start = format(parseISO(rounds[0].summary.startDate), 'ddMMyyyy')
+  const date_start = format(parseISO(college.rounds[0].summary.startDate), 'ddMMyyyy')
   console.log(date_start)
   c.push(utils.createDatePart(date_start, 241, 284, 'd'))
   c.push(utils.createDatePart(date_start, 241, 284, 'm'))
   c.push(utils.createDatePart(date_start, 241, 284, 'y'))
 
-  const time_start = format(parseISO(rounds[0].summary.startDate), 'hh')
+  const time_start = format(parseISO(college.rounds[0].summary.startDate), 'hh')
   c.push(utils.createText(time_start < 10 ? '0' + time_start : time_start, 180, 293, '7', '1.5'))
 
-  const minutes_start = format(parseISO(rounds[0].summary.startDate), 'hh')
+  const minutes_start = format(parseISO(college.rounds[0].summary.startDate), 'hh')
   c.push(utils.createText(minutes_start < 10 ? '0' + minutes_start : minutes_start, 195, 293, '7', '1.5'))
 
-  const time_end = format(parseISO(rounds[0].summary.endDate), 'hh')
+  const time_end = format(parseISO(college.rounds[0].summary.endDate), 'hh')
   c.push(utils.createText(time_end < 10 ? '0' + time_end : time_end, 288, 293, '7', '1.5'))
 
-  const minutes_end = format(parseISO(rounds[0].summary.endDate), 'mm')
+  const minutes_end = format(parseISO(college.rounds[0].summary.endDate), 'mm')
   c.push(utils.createText(minutes_end < 10 ? '0' + minutes_end : minutes_end, 303, 293, '7', '1.5'))
 
   // Carence
-  c.push(utils.createText('x', rounds[0].summary.deficiency ? 295 : 260, 301, '10'))
+  c.push(utils.createText('x', college.rounds[0].summary.deficiency ? 295 : 260, 301, '10'))
 
-  c.push(utils.createText(rounds[0].summary.electorsNumber, 291, 310))
-  c.push(utils.createText(rounds[0].summary.votesNumber, 291, 318))
-  c.push(utils.createText(rounds[0].summary.blankVotesNumber, 291, 326))
-  c.push(utils.createText(rounds[0].summary.validVotesNumber, 291, 334))
-  c.push(utils.createText(rounds[0].summary.electorsNumber, 400, 303))
-  c.push(utils.createText((rounds[0].summary.electorsNumber / 2).toFixed(2), 419, 306))
-  c.push(utils.createText('x', 343, rounds[0].summary.quorum ? 333 : 324))
+  c.push(utils.createText(college.rounds[0].summary.electorsNumber, 291, 310))
+  c.push(utils.createText(college.rounds[0].summary.votesNumber, 291, 318))
+  c.push(utils.createText(college.rounds[0].summary.blankVotesNumber, 291, 326))
+  c.push(utils.createText(college.rounds[0].summary.validVotesNumber, 291, 334))
+  c.push(utils.createText(college.rounds[0].summary.electorsNumber, 400, 303))
+  c.push(utils.createText((college.rounds[0].summary.electorsNumber / 2).toFixed(2), 419, 306))
+  c.push(utils.createText('x', 343, college.rounds[0].summary.quorum ? 333 : 324))
 
-  c.push(utils.createText(rounds[0].summary.nbLists < 10 ? '0' + rounds[0].summary.nbLists.toString() : rounds[0].summary.nbLists, 535, 287, '9', '2'))
-  c.push(utils.createText(rounds[0].summary.seats < 10 ? '0' + rounds[0].summary.seats.toString() : rounds[0].summary.seats, 535, 305, '9', '2'))
-  c.push(utils.createText(rounds[0].summary.validVotesNumber, 495, 327))
-  c.push(utils.createText(rounds[0].summary.seats, 498, 337))
-  c.push(utils.createText(rounds[0].summary.quotient.toFixed(2), 519, 332))
+  c.push(utils.createText(college.rounds[0].summary.nbLists < 10 ? '0' + college.rounds[0].summary.nbLists.toString() : college.rounds[0].summary.nbLists, 535, 287, '9', '2'))
+  c.push(utils.createText(college.rounds[0].summary.seats < 10 ? '0' + college.rounds[0].summary.seats.toString() : college.rounds[0].summary.seats, 535, 305, '9', '2'))
+  c.push(utils.createText(college.rounds[0].summary.validVotesNumber, 495, 327))
+  c.push(utils.createText(college.rounds[0].summary.seats, 498, 337))
+  c.push(utils.createText(college.rounds[0].summary.quotient.toFixed(2), 519, 332))
 
   let nbCandidate = 0
-  rounds[0].results.forEach(candidate => {
+  college.rounds[0].results.forEach(candidate => {
     c.push(utils.createText(candidate.user.firstname, 35, 421 + nbCandidate * 13.7, '5'))
     c.push(utils.createText(candidate.user.lastname, 35, 426 + nbCandidate * 13.7, '5', '0', true))
     c.push(utils.createText((candidate.user.civility === 'MALE' ? 'H' : 'F'), 109, 422 + nbCandidate * 13.7, '7'))
@@ -135,7 +119,7 @@ function createContent(data) {
     c.push(utils.createText(candidate.candidateBallot, 285, 422 + nbCandidate * 13.7, '5'))
 
     // Only print if Quorum is true
-    // if (rounds[0].summary.quorum) {
+    // if (college.rounds[0].summary.quorum) {
     c.push(utils.createText(candidate.candidateBallotSum, 315, 422 + nbCandidate * 13.7, '5'))
     c.push(utils.createText(candidate.candidatePerList, 345, 422 + nbCandidate * 13.7, '5'))
     c.push(utils.createText(candidate.voteAveragePerList.toFixed(2), 375, 422 + nbCandidate * 13.7, '5'))
@@ -152,46 +136,58 @@ function createContent(data) {
   c.push(utils.createBackground('background_2'))
 
   nbCandidate = 0
-  if (rounds[1]) {
+  if (college.rounds[1]) {
     // IV - Results 2st Round if need be
     // Date & times
-    const round_2_date_start = format(parseISO(rounds[1].summary.startDate), 'ddMMyyyy')
+    const round_2_date_start = format(parseISO(college.rounds[1].summary.startDate), 'ddMMyyyy')
 
     c.push(utils.createDatePart(round_2_date_start, 131, 60, 'd'))
     c.push(utils.createDatePart(round_2_date_start, 131, 60, 'm'))
     c.push(utils.createDatePart(round_2_date_start, 131, 60, 'y'))
 
-    const time_start = format(parseISO(rounds[1].summary.startDate), 'hh')
+    const time_start = format(parseISO(college.rounds[1].summary.startDate), 'hh')
     c.push(utils.createText(time_start < 10 ? '0' + time_start : time_start, 123, 69, '7', '1.5'))
 
-    const minutes_start = format(parseISO(rounds[1].summary.startDate), 'hh')
+    const minutes_start = format(parseISO(college.rounds[1].summary.startDate), 'hh')
     c.push(utils.createText(minutes_start < 10 ? '0' + minutes_start : minutes_start, 138, 69, '7', '1.5'))
 
-    const time_end = format(parseISO(rounds[1].summary.endDate), 'hh')
+    const time_end = format(parseISO(college.rounds[1].summary.endDate), 'hh')
     c.push(utils.createText(time_end < 10 ? '0' + time_end : time_end, 276, 69, '7', '1.5'))
 
-    const minutes_end = format(parseISO(rounds[1].summary.endDate), 'mm')
+    const minutes_end = format(parseISO(college.rounds[1].summary.endDate), 'mm')
     c.push(utils.createText(minutes_end < 10 ? '0' + minutes_end : minutes_end, 291, 69, '7', '1.5'))
 
 
 
     // Carence
-    c.push(utils.createText('x', rounds[0].summary.deficiency ? 237 : 206.6, 75, '10'))
+    c.push(utils.createText('x', college.rounds[0].summary.deficiency ? 237 : 206.6, 75, '10'))
 
-    c.push(utils.createText(rounds[0].summary.electorsNumber, 244, 86))
-    c.push(utils.createText(rounds[0].summary.votesNumber, 244, 94.5))
-    c.push(utils.createText(rounds[0].summary.blankVotesNumber, 244, 102.5))
-    c.push(utils.createText(rounds[0].summary.validVotesNumber, 244, 109.5))
+    c.push(utils.createText(college.rounds[0].summary.electorsNumber, 244, 86))
+    c.push(utils.createText(college.rounds[0].summary.votesNumber, 244, 94.5))
+    c.push(utils.createText(college.rounds[0].summary.blankVotesNumber, 244, 102.5))
+    c.push(utils.createText(college.rounds[0].summary.validVotesNumber, 244, 109.5))
 
-    c.push(utils.createText(rounds[0].summary.nbLists < 10 ? '0' + rounds[0].summary.nbLists.toString() : rounds[0].summary.nbLists, 465, 60, '9', '2'))
-    c.push(utils.createText(rounds[0].summary.seats < 10 ? '0' + rounds[0].summary.seats.toString() : rounds[0].summary.seats, 465, 78, '9', '2'))
-    c.push(utils.createText(rounds[0].summary.validVotesNumber, 428, 102))
-    c.push(utils.createText(rounds[0].summary.seats, 430, 112))
-    c.push(utils.createText(rounds[0].summary.quotient.toFixed(2), 450, 105))
+    c.push(utils.createText(college.rounds[0].summary.nbLists < 10 ? '0' + college.rounds[0].summary.nbLists.toString() : college.rounds[0].summary.nbLists, 465, 60, '9', '2'))
+    c.push(utils.createText(college.rounds[0].summary.seats < 10 ? '0' + college.rounds[0].summary.seats.toString() : college.rounds[0].summary.seats, 465, 78, '9', '2'))
+    c.push(utils.createText(college.rounds[0].summary.validVotesNumber, 428, 102))
+    c.push(utils.createText(college.rounds[0].summary.seats, 430, 112))
+    c.push(utils.createText(college.rounds[0].summary.quotient.toFixed(2), 450, 105))
+
+    // Calculated Info
+    // c.push(utils.createText(college.A_nbElectors, 244, 86))
+    // c.push(utils.createText(college.rounds[1].B_nbVotants, 244, 94.5))
+    // c.push(utils.createText(college.rounds[1].C_nbVotesBlanc, 244, 102.5))
+    // c.push(utils.createText(college.rounds[1].D_nbValidVote, 244, 109.5))
+
+    // c.push(utils.createText(college.rounds[1].D_nbValidVote, 428, 102))
+    // c.push(utils.createText(college.P_nbSeats, 430, 112))
+    // c.push(utils.createText(college.rounds[1].G_quotient_electoral.toFixed(2), 450, 105))
+    // c.push(utils.createText(college.rounds[1].L_nbLists < 10 ? '0' + college.rounds[1].L_nbLists.toString() : college.rounds[1].L_nbLists, 465, 60, '9', '2'))
+    // c.push(utils.createText(college.P_nbSeats < 10 ? '0' + college.P_nbSeats.toString() : college.P_nbSeats, 465, 78, '9', '2'))
 
     const candidateOffsetY = 13.0
     let nbCandidate = 0
-    rounds[1].results.forEach(candidate => {
+    college.rounds[1].results.forEach(candidate => {
       c.push(utils.createText(candidate.user.firstname, 503, 201 + nbCandidate * candidateOffsetY, '5'))
       c.push(utils.createText(candidate.user.lastname, 503, 206 + nbCandidate * candidateOffsetY, '5', '0', true))
       c.push(utils.createText((candidate.user.civility === 'MALE' ? 'H' : 'F'), 39, 202 + nbCandidate * candidateOffsetY, '7'))
@@ -201,7 +197,7 @@ function createContent(data) {
       c.push(utils.createText(candidate.candidateBallot, 166, 202 + nbCandidate * candidateOffsetY, '5'))
 
       // Only print if Quorum is true
-      // if (rounds[0].summary.quorum) {
+      // if (college.rounds[0].summary.quorum) {
       c.push(utils.createText(candidate.candidateBallotSum, 213, 202 + nbCandidate * candidateOffsetY, '5'))
       c.push(utils.createText(candidate.candidatePerList, 250, 202 + nbCandidate * candidateOffsetY, '5'))
       c.push(utils.createText(candidate.voteAveragePerList.toFixed(2), 277, 202 + nbCandidate * candidateOffsetY, '5'))

@@ -8,11 +8,11 @@ function getDatePart(date, part) {
   if (part === 'y') return str.substring(4, 8)
 }
 
-function createDatePart(siret, x, y, part) {
+function createDatePart(date, x, y, part) {
   const offset = part === 'd' ? 0 : part === 'm' ? 23 : 45
   const datePart = {
     absolutePosition: { x: x + offset, y: y },
-    text: this.getDatePart(siret, part),
+    text: this.getDatePart(date, part),
     fontSize: 8,
     characterSpacing: '3'
   }
@@ -40,37 +40,39 @@ function createSiretPart(siret, x, y, part) {
 
 function getYaxisBasedOnStatus(status) {
   switch (status) {
-    case PV_STATUSES.OUVRIERS:
+    case 1:
       return 145
-    case PV_STATUSES.EMPLOYES:
+    case 2:
       return 157
-    case PV_STATUSES.TECHNICIENS:
+    case 3:
       return 170
-    case PV_STATUSES.AGENTS_DE_MAITRISE:
+    case 4:
       return 182
-    case PV_STATUSES.INGENIEURS:
+    case 5:
       return 195
-    case PV_STATUSES.CADRES:
+    case 6:
       return 208
-    default:
+    case 7:
       return 220
+    default:
+      return 0
   }
 }
 
 function getYaxisDenomination(denomination) {
   switch (denomination) {
-    case COLLEGE_LABELS.COLLEGE_UNIQUE:
+    case 0:
       return 144
-    case COLLEGE_LABELS.PREMIER_COLLEGE:
+    case 1:
       return 164
-    case COLLEGE_LABELS.DEUXIEME_COLLEGE:
+    case 2:
       return 184
-    case COLLEGE_LABELS.TROISIEME_COLLEGE:
+    case 3:
       return 203
-    case COLLEGE_LABELS.AUTRE_COLLEGE:
+    case 4:
       return 223
     default:
-      return 223
+      return 0
   }
 }
 
