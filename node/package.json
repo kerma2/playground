@@ -15,6 +15,9 @@
 		"@babel/preset-react": "^7.7.4",
 		"@babel/register": "^7.7.0",
 		"@babel/runtime": "^7.7.2",
-		"nodemon": "^2.0.1"
+		"date-fns": "^2.8.1",
+		"fs-extra": "^8.1.0",
+		"nodemon": "^2.0.1",
+		"pdfmake": "^0.1.62"
 	}
 }
