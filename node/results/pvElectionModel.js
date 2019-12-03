@@ -32,6 +32,8 @@ export function printModel(model) {
   let content = [];
 
   model.pages.forEach((page, pageIndex) => {
+    if (!page)
+      return
     if (pageIndex > 0) {
       content.push({
         absolutePosition: { x: 0, y: 0 },
@@ -127,7 +129,7 @@ export function createModel(data) {
   return {
     pages: [
       {
-        backgroundAbsolutePath: path.join(__dirname, './generatePvElectionsPdf/cerfa_15822_01/cerfa_15822_01_1.png'),
+        backgroundAbsolutePath: path.join(__dirname, './cerfa_15822_01/cerfa_15822_01_1.png'),
         textElements: [
           {
             text: data.establishment.siret[0],
@@ -496,8 +498,9 @@ export function createModel(data) {
           },
         ]
       },
+      !data.rounds[1] ? null : 
       {
-        backgroundAbsolutePath: path.join(__dirname, './generatePvElectionsPdf/cerfa_15822_01/cerfa_15822_01_2.png'),
+        backgroundAbsolutePath: path.join(__dirname, './cerfa_15822_01/cerfa_15822_01_2.png'),
         textElements: [
           {
             text: data.rounds[1].summary.startDate.day,
