@@ -9,8 +9,8 @@ export function printDataSecondRoundCandidates(c, data) {
   let nbCandidate = 0
   if (rounds[1]) {
     rounds[1].results.forEach(candidate => {
-      c.push(utils.createText(candidate.user.firstname, 503, 201 + nbCandidate * candidateOffsetY, '5'))
-      c.push(utils.createText(candidate.user.lastname, 503, 206 + nbCandidate * candidateOffsetY, '5', '0', true))
+      c.push(utils.createText(candidate.user.firstname, 503, 201 + nbCandidate * candidateOffsetY, '5', candidate.elected))
+      c.push(utils.createText(candidate.user.lastname, 503, 206 + nbCandidate * candidateOffsetY, '5', '0', candidate.elected))
       c.push(utils.createText((candidate.user.civility === 'MALE' ? 'H' : 'F'), 39, 202 + nbCandidate * candidateOffsetY, '7'))
       // c.push(utils.createText(el.syndicate, 123, 422 + nbCandidate * candidateOffsetY, '5'))
       c.push(utils.createText(candidate.syndicate, 55, 202 + nbCandidate * candidateOffsetY, '5'))

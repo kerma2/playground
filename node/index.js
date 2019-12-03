@@ -1,7 +1,7 @@
 import '@babel/polyfill'
+import fs from 'fs-extra'
 
-// import computeElectionResults from './results/computeElectionResults'
-import generatePvElectionsPdf from './results/generatePvElectionsPdf/generatePvElectionsPdf'
+import generatePvElectionsPdf from './results/generatePvElection'
 
 const results = {
 	voteType: "titular",
@@ -90,7 +90,7 @@ const results = {
 					electedByList: 2, // Nombre de sièges attribué en tout
 					voteAveragePerList: 12, // Moyenne des voix dans la listes
 					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
-					elected: true,
+					elected: false,
 				},
 				{
 					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
@@ -103,7 +103,7 @@ const results = {
 					electedByList: 2, // Nombre de sièges attribué en tout
 					voteAveragePerList: 12, // Moyenne des voix dans la listes
 					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
-					elected: true,
+					elected: false,
 				},
 				{
 					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
@@ -114,9 +114,9 @@ const results = {
 					candidatePerList: 2, //nombre de candidat dans la liste
 					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
 					electedByList: 2, // Nombre de sièges attribué en tout
-					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					voteAveragePerList: 13, // Moyenne des voix dans la listes
 					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
-					elected: true,
+					elected: false,
 				},
 				{
 					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
@@ -583,7 +583,9 @@ const results = {
 }
 
 async function main() {
-	generatePvElectionsPdf(results);
+	const pdf = generatePvElectionsPdf(results);
+	pdf.pipe(fs.createWriteStream("./pv.pdf"))
+	pdf.end()
 	console.log("ok")
 }
 

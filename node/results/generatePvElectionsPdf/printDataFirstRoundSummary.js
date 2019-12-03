@@ -12,13 +12,13 @@ export function printDataFirstRoundSummary(c, data) {
     c.push(utils.createDatePart(date_start, 241, 284, 'm'))
     c.push(utils.createDatePart(date_start, 241, 284, 'y'))
   
-    const time_start = format(parseISO(rounds[0].summary.startDate), 'hh')
+    const time_start = format(parseISO(rounds[0].summary.startDate), 'HH')
     c.push(utils.createText(time_start < 10 ? '0' + time_start : time_start, 180, 293, '7', '1.5'))
   
-    const minutes_start = format(parseISO(rounds[0].summary.startDate), 'hh')
+    const minutes_start = format(parseISO(rounds[0].summary.startDate), 'mm')
     c.push(utils.createText(minutes_start < 10 ? '0' + minutes_start : minutes_start, 195, 293, '7', '1.5'))
   
-    const time_end = format(parseISO(rounds[0].summary.endDate), 'hh')
+    const time_end = format(parseISO(rounds[0].summary.endDate), 'HH')
     c.push(utils.createText(time_end < 10 ? '0' + time_end : time_end, 288, 293, '7', '1.5'))
   
     const minutes_end = format(parseISO(rounds[0].summary.endDate), 'mm')

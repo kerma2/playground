@@ -7,8 +7,8 @@ export function printDataFirstRoundCandidates(c, data) {
 
   let nbCandidate = 0
   rounds[0].results.forEach(candidate => {
-    c.push(utils.createText(candidate.user.firstname, 35, 421 + nbCandidate * 13.7, '5'))
-    c.push(utils.createText(candidate.user.lastname, 35, 426 + nbCandidate * 13.7, '5', '0', true))
+    c.push(utils.createText(candidate.user.firstname, 35, 421 + nbCandidate * 13.7, '5', candidate.elected))
+    c.push(utils.createText(candidate.user.lastname, 35, 426 + nbCandidate * 13.7, '5', '0', candidate.elected))
     c.push(utils.createText((candidate.user.civility === 'MALE' ? 'H' : 'F'), 109, 422 + nbCandidate * 13.7, '7'))
     // c.push(utils.createText(el.syndicate, 123, 422 + nbCandidate * 13.7, '5'))
     c.push(utils.createText(candidate.syndicate, 197, 422 + nbCandidate * 13.7, '5'))
