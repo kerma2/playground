@@ -4,7 +4,7 @@ import fs from 'fs-extra'
 import generatePvElectionsPdf from './results/generatePvElection'
 
 const results = {
-	voteType: "titular",
+	voteType: "suppleant",
 	establishment: {
 		name: "GS VOTE",
 		siret: "01234567891234",
@@ -22,7 +22,6 @@ const results = {
 		composition: [1, 5, 2, 7], // Array de nombres correspondant aux catégories, 7: Autres
 		compositionOther: ["Autre 1", "Autre 2" ], // Autres catégories 
 		denomination: "",
-		statuses: "",
 	},
 	rounds: [
 		{
@@ -289,6 +288,296 @@ const results = {
 				},
 			]
 		},
+		{
+			summary: {
+				startDate: "2019-12-01T09:52:02.024Z",
+				endDate: "2019-12-01T09:52:02.024Z",
+				seats: 2,
+				deficiency: false,
+				electorsNumber: 16,
+				votesNumber: 1,
+				blankVotesNumber: 0,
+				validVotesNumber: 1,
+				candidates:
+					[{
+						userId: '5EMfkLzuaB7aGojx2',
+						votes: 1,
+						elected: false,
+						logo: ''
+					},
+					{
+						userId: 'FjRweKJJaMCuqZ4Yb',
+						votes: 1,
+						elected: false,
+						logo: ''
+					}],
+				quorum: false,
+				quotient: 0.5,
+				nbLists: 3
+			},
+			results: [
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'FEMALE' },
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12,
+					candidateBallotSum: 14,
+					candidatePerList: 2, //nombre de candidat dans la liste 
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11], // Siège selon la règles de la plus forte moyenne
+					elected: true
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+				{
+					user: { firstname: 'Philippe', lastname: 'Larcher', civility: 'MALE' }, // TODO: Ajouter civility
+					syndicate: "CGT",
+					syndicateBallot: 16, //nombre de bulletin de la liste
+					candidateBallot: 12, // Nombre de voix receuillies par chaque 
+					candidateBallotSum: 14, // Total des voies
+					candidatePerList: 2, //nombre de candidat dans la liste
+					seatsAttributedByList: 1, //Nombre de siège selon la règle du quotient
+					electedByList: 2, // Nombre de sièges attribué en tout
+					voteAveragePerList: 12, // Moyenne des voix dans la listes
+					seatsAttributed: [11, 12, 13], // Siège selon la règles de la plus forte moyenne 
+					elected: true,
+				},
+			]
+		}
 	]
 }
 

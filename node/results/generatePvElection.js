@@ -2,22 +2,8 @@ import PdfPrinter from 'pdfmake'
 import path from 'path'
 import fs from 'fs-extra'
 import { format, parseISO } from 'date-fns'
-import  { createModel, printModel } from './pvElectionModel'
-
-Object.byString = function (o, s) {
-  s = s.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-  s = s.replace(/^\./, '');           // strip a leading dot
-  var a = s.split('.');
-  for (var i = 0, n = a.length; i < n; ++i) {
-    var k = a[i];
-    if (k in o) {
-      o = o[k];
-    } else {
-      return;
-    }
-  }
-  return o;
-}
+import { createModel } from './model'
+import { pdfFromModel } from './modelParser'
 
 function toDetailDateObj(ISOdate) {
   const date = parseISO(ISOdate);
@@ -75,6 +61,6 @@ export default function generatePvElection(results) {
 
   const processed = preprocessResults(results)
   const model = createModel(processed)
-  const pdf = printModel(model)
+  const pdf = pdfFromModel(model)
   return pdf;
 }
