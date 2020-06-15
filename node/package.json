@@ -1,0 +1,23 @@
+{
+	"name": "playground",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"start": "node -r @babel/register index",
+		"dev": "nodemon index --exec 'node -r @babel/register'"
+	},
+	"dependencies": {
+		"@babel/core": "^7.7.2",
+		"@babel/plugin-transform-runtime": "^7.6.2",
+		"@babel/polyfill": "^7.7.0",
+		"@babel/preset-env": "^7.7.1",
+		"@babel/preset-react": "^7.7.4",
+		"@babel/register": "^7.7.0",
+		"@babel/runtime": "^7.7.2",
+		"date-fns": "^2.8.1",
+		"fs-extra": "^8.1.0",
+		"nodemon": "^2.0.1",
+		"pdfmake": "^0.1.62"
+	}
+}
